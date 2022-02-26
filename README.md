@@ -71,7 +71,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Tesseract.js
 
-Our receipt scanner is built using Tesseract.js. 
-GitHub: https://github.com/naptha/tesseract.js?files=1
+Our receipt scanner is built using Tesseract.js.\
+GitHub: https://github.com/naptha/tesseract.js?files=1 \
 Website: https://tesseract.projectnaptha.com/
 
