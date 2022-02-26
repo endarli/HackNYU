@@ -5,8 +5,8 @@ import './App.css';
 
 
 // Screens
-import ReceiptReader from "./hello-world/src/screens/ReceiptReader/ReceiptReader";
-import Table from "./hello-world/src/screens/Table/Table";
+import ReceiptReader from "./screens/ReceiptReader/ReceiptReader";
+import Table from "./screens/Table/Table";
 
 // Components
 
