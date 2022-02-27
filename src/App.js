@@ -4,13 +4,13 @@ import './App.css';
 
 function App() {
 
-  const COLORS = ['#2085EC', '#72B4EB', '#0E59AA', '#8464A0', '#F9CFF2'];
+  const colors = ['#2085EC', '#72B4EB', '#0E59AA', '#8464A0', '#ba7ba1'];
 
-  var food = 323.00;
-  var clothing = 223.42;
-  var appliances = 25.03;
-  var entertainment = 400.32;
-  var other = 62.34;
+  var food = 0;
+  var clothing = 0;
+  var appliances = 0;
+  var entertainment = 0;
+  var other = 0;
 
   const data = [
     {name: 'Food', cost: food},
@@ -22,27 +22,44 @@ function App() {
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-    const radius = innerRadius + (outerRadius - innerRadius) * 1.3;
+    const radius = innerRadius + (outerRadius - innerRadius) * 1.4;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
     return (
-      <text x={x} y={y} fill={COLORS[index % COLORS.length]} fontFamily='verdana' fontSize={24} textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+      <text x={x} y={y} fill={colors[index % colors.length]} fontFamily='verdana' fontSize={20} textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
         {data[index].name + ": $" + data[index].cost.toFixed(2)}
       </text>
     );
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <PieChart width={950} height={600}>
-          <Pie data={data} dataKey="cost" isAnimationActive={true} innerRadius={100} outerRadius={200} fill="8884d8" label={renderCustomizedLabel}>
-              {data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)};
-          </Pie>
-        </PieChart>
-      </header>
-    </div>
+    <body>
+        <div className='header'>
+          <div className='headercard'> <h1>RCPT</h1> </div>
+        </div>
+
+        <div className="row">
+          <div className="leftcolumn">
+            <div className="card">
+              <h1>Total Spendings</h1>
+              <PieChart width={750} height={400}>
+                <Pie cx="50%" cy="50%" data={data} dataKey="cost" isAnimationActive={true} innerRadius={75} outerRadius={150} fill="8884d8" label={renderCustomizedLabel}>
+                    {data.map((entry, index) => <Cell fill={colors[index % colors.length]}/>)};
+                </Pie>
+              </PieChart>
+            </div>
+          </div>
+          <div className="rightcolumn">
+            <div className="card">
+              <h1>Scan Receipt</h1> 
+              <div className="button button1">
+              Upload image of receipt
+              </div>
+            </div>
+          </div>
+        </div>
+    </body>
   );
 }
 
