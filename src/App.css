@@ -14,11 +14,11 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #323232;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
@@ -35,4 +35,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Pie-design {
+  width: 700;
+  height: 700;
 }
