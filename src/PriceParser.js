@@ -1,5 +1,6 @@
 /**
  * Price parser from receipt image. Built using Tesseract.js library.
+ * Tesseract.js GitHub: https://github.com/naptha/tesseract.js?files=1
 */
 
 /**
@@ -44,11 +45,7 @@ function find_total(wordArr) {
     var i;
     for(i = wordArr.length-1; i >=0; i--) {
         var formatter = wordArr[i].toLowerCase().replace(/\s+/g, "");
-        // if(formatter.includes("total") || 
-        // formatter.includes("balance") || 
-        // formatter.includes("due") || 
-        // formatter.includes("amount")) {
-
+        // Check the Levanshtein distance between the parsed text and expected indicators of total amount
         if(levDistance(formatter, "total") < 3
         || levDistance(formatter, "balance") < 3
         || levDistance(formatter, "due") < 3
@@ -113,4 +110,3 @@ function levDistance(a, b) {
 function getTail(str) {
     return str.toString().slice(1);
 }
-
