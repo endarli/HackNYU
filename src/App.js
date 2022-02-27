@@ -7,9 +7,42 @@ import './App.css';
 function App() {
   const {register, handleSubmit} = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const onSubmit = (data, e) => {
+
+    var Type = document.getElementById('Type').value;
+    var Item = document.getElementById('Item').value;
+    var Amount = document.getElementById('Amount').value;
+    var key = document.getElementById('key').value;
+    console.log(key);
+
+    const item = {
+        Type: Type,
+        Item: Item,
+        Amount: Amount,
+    }
+
+    window.localStorage.setItem(key, JSON.stringify(item));  
+    //converting object to string
   };
+
+  const onError = (errors, e) => {
+    console.log(errors, e)
+  };
+
+  const getStorage = (data, e) => {
+    var key =  parseInt(document.getElementById('key1').value);
+    var item = localStorage.getItem(key);
+    var paragraph = document.createElement("p");
+    var infor = document.createTextNode(item);
+    paragraph.appendChild(infor);
+    var element = document.getElementById("retrieve");
+    element.appendChild(paragraph);
+  }
+
+  const clearStorage = () => {
+    //clears the entire localStorage
+    localStorage.clear();
+}
 
   const colors = ['#2085EC', '#72B4EB', '#0E59AA', '#8464A0', '#ba7ba1'];
 
@@ -72,11 +105,43 @@ function App() {
           </div>
           <div className="rightcolumn">
             <div className="card">
+              
               <form onSubmit={handleSubmit(onSubmit)}>
                 <h1>Scan Receipt</h1>
-                <input {...register("picture")} type="file"/>
+                <input {...register("picture")} className="notfield" type="file"/>
                 <button className="button button1">Upload image of receipt</button>
               </form>
+
+              <form onSubmit={handleSubmit(onSubmit, onError)}>
+                <h1>Manual Receipt</h1>
+                <p>
+                  Item #: <input id="key" type="number" placeholder="#"/>
+                  &nbsp;Type: <select id="Type" placeholder="N/A">
+                    <option>Food</option>
+                    <option>Clothing</option>
+                    <option>Appliance</option>
+                    <option>Entertainment</option>
+                    <option>Other</option>
+
+                  </select>
+                </p>
+                <p>
+                  Item: <input id="Item" type="text" placeholder="Item Name"/>
+                  &nbsp;Amount: <input id="Amount" type="number" placeholder="0￠"/>
+                </p>
+                <button className="button button1" type="submit">Upload component of receipt</button>
+              </form>
+
+              <form onSubmit={handleSubmit(clearStorage)}>
+                <h1>Clear Local Storage</h1>
+                <button className="button button1" type="submit">Clear</button>
+              </form>
+              <form onSubmit={handleSubmit(getStorage)}>
+                <h1>Get Local Storage</h1>
+                <p>Item #: <input id="key1" type="number" placeholder="#"/></p>
+                <button className="button button1" type="submit">Get item</button>
+              </form>
+              <div id="retrieve"></div>
             </div>
           </div>
         </div>
