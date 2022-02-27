@@ -1,5 +1,5 @@
 import React from 'react';
-import { PieChart, Pie, Cell} from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend} from 'recharts';
 import './App.css';
 
 function App() {
@@ -25,10 +25,9 @@ function App() {
     const radius = innerRadius + (outerRadius - innerRadius) * 1.4;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
     return (
-      <text x={x} y={y} fill={colors[index % colors.length]} fontFamily='verdana' fontSize={20} textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-        {data[index].name + ": $" + data[index].cost.toFixed(2)}
+      <text x={x} y={y} fill={colors[index % colors.length]} fontFamily='verdana' fontSize={18} textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+        {"$" + data[index].cost.toFixed(2)}
       </text>
     );
   };
@@ -43,11 +42,25 @@ function App() {
           <div className="leftcolumn">
             <div className="card">
               <h1>Total Spendings</h1>
-              <PieChart width={850} height={400}>
-                <Pie cx="50%" cy="50%" data={data} dataKey="cost" isAnimationActive={true} innerRadius={75} outerRadius={150} fill="8884d8" label={renderCustomizedLabel}>
-                    {data.map((entry, index) => <Cell fill={colors[index % colors.length]}/>)};
-                </Pie>
-              </PieChart>
+              <div style={{width: "100%", height: 400}}>
+              <ResponsiveContainer>
+                <PieChart width={850} height={400}>
+                  <Pie 
+                    cx="50%" cy="50%" 
+                    data={data} 
+                    dataKey="cost" 
+                    isAnimationActive={true} 
+                    innerRadius={75} 
+                    outerRadius={150} 
+                    fill="8884d8" 
+                    legendType='circle'
+                    label={renderCustomizedLabel}>
+                      {data.map((entry, index) => <Cell fill={colors[index % colors.length]}/>)};
+                  </Pie>
+                  <Legend verticalAlign='bottom' height={36}/>
+                </PieChart>
+              </ResponsiveContainer>
+              </div>
             </div>
           </div>
           <div className="rightcolumn">
