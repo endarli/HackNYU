@@ -2,12 +2,11 @@ import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend} from 'recharts';
 import {useForm} from "react-hook-form";
 import './App.css';
-//import axios from 'axios';
 
 function App() {
   const {register, handleSubmit} = useForm();
 
-  const onSubmit = (data, e) => {
+  const onSubmit = () => {
 
     var Type = document.getElementById('Type').value;
     var Item = document.getElementById('Item').value;
@@ -29,7 +28,7 @@ function App() {
     console.log(errors, e)
   };
 
-  const getStorage = (data, e) => {
+  const getStorage = () => {
     var key =  parseInt(document.getElementById('key1').value);
     var item = localStorage.getItem(key);
     var paragraph = document.createElement("p");
