@@ -1,8 +1,15 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend} from 'recharts';
+import {useForm} from "react-hook-form";
 import './App.css';
+//import axios from 'axios';
 
 function App() {
+  const {register, handleSubmit} = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data)
+  };
 
   const colors = ['#2085EC', '#72B4EB', '#0E59AA', '#8464A0', '#ba7ba1'];
 
@@ -65,10 +72,11 @@ function App() {
           </div>
           <div className="rightcolumn">
             <div className="card">
-              <h1>Scan Receipt</h1> 
-              <div className="button button1">
-              Upload image of receipt
-              </div>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <h1>Scan Receipt</h1>
+                <input {...register("picture")} type="file"/>
+                <button className="button button1">Upload image of receipt</button>
+              </form>
             </div>
           </div>
         </div>

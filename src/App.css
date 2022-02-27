@@ -28,6 +28,7 @@
   float: right;
   width: 40%;
   background-color: #ba7ba1;
+  min-height: 561px;
 }
 
 .row:after {
@@ -59,7 +60,7 @@
   text-decoration: none;
   padding: 16px 32px;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 5px;
   transition-duration: 0.4s;
   cursor: pointer;
 }
