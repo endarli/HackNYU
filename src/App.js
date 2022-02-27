@@ -6,11 +6,11 @@ function App() {
 
   const colors = ['#2085EC', '#72B4EB', '#0E59AA', '#8464A0', '#ba7ba1'];
 
-  var food = 0;
-  var clothing = 0;
-  var appliances = 0;
-  var entertainment = 0;
-  var other = 0;
+  var food = 100;
+  var clothing = 250;
+  var appliances = 30;
+  var entertainment = 430;
+  var other = 320;
 
   const data = [
     {name: 'Food', cost: food},
@@ -43,7 +43,7 @@ function App() {
           <div className="leftcolumn">
             <div className="card">
               <h1>Total Spendings</h1>
-              <PieChart width={750} height={400}>
+              <PieChart width={850} height={400}>
                 <Pie cx="50%" cy="50%" data={data} dataKey="cost" isAnimationActive={true} innerRadius={75} outerRadius={150} fill="8884d8" label={renderCustomizedLabel}>
                     {data.map((entry, index) => <Cell fill={colors[index % colors.length]}/>)};
                 </Pie>
