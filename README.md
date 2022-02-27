@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Tesseract.js
+
+Our receipt scanner is built using Tesseract.js.\
+GitHub: https://github.com/naptha/tesseract.js?files=1 \
+Website: https://tesseract.projectnaptha.com/
+
