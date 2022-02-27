@@ -42,7 +42,7 @@ function App() {
   return (
     <body>
         <div className='header'>
-          <div className='headercard'> <h1>Snap n Save</h1> </div>
+          <div className='headercard'> <h1>SmartSpend</h1> </div>
         </div>
 
         <div className="row">
